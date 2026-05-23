@@ -1,7 +1,7 @@
-import Header from "./lib/components/Header";
-import Editor from "./lib/components/Ediotr";
-import LinkYouLocalJournal from "./lib/components/LinkYouLocalJournal";
-import ExistingJournal from "./lib/components/ExistingJournal";
+import Header from "./Header";
+import Editor from "./Ediotr";
+import LinkYouLocalJournal from "./LinkYouLocalJournal";
+import ExistingJournal from "./ExistingJournal";
 
 function RootPage({ rootFolder, setRootFolder }) {
   async function handleSave(text, media) {
@@ -83,7 +83,7 @@ function RootPage({ rootFolder, setRootFolder }) {
     }
   }
   return (
-    <main className="app-shell">
+    <main className="app-shell items-center">
       <Header />
       <Editor rootFolder={rootFolder} onSave={handleSave} />
       <LinkYouLocalJournal setRootFolder={setRootFolder} />
