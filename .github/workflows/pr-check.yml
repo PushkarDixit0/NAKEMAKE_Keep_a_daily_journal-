@@ -23,7 +23,7 @@ jobs:
       - name: Install PNPM
         run: npm install -g pnpm
 
-      - name: Verify PNPM
+      - name: Check PNPM
         run: pnpm --version
 
       - name: Install Dependencies
