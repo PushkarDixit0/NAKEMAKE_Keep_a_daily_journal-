@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import RootPage from "./RootPage";
+import RootPage from "./lib/components/RootPage";
 import PageOpen from "./lib/components/PageOpen";
 import MediaGallery from "./lib/components/MediaGallery";
 import { useState } from "react";

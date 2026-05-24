@@ -70,42 +70,76 @@ function MediaGallery({ rootFolder }) {
   }, [rootFolder, id]);
   return (
     <>
-      <div className="flex flex-wrap gap-4">
-        {/* Images */}
-        {image.map((item, index) => (
-          <img
-            key={`img-${index}`}
-            src={URL.createObjectURL(item.file)}
-            alt={item.name}
-            className="w-24 h-24 object-cover rounded"
-          />
-        ))}
+      {/* Image */}
 
+      <div className="p-20 min-h-lvh flex gap-20 flex-col">
+        {image.length > 0 ? (
+          <div className="flex justify-center flex-col  gap-10">
+            <h2 className="flex justify-center text-2xl">{"Images"}</h2>
+            {/* Images */}
+            <div className=" grid grid-cols-3 gap-2 justify-center items-center">
+              {image.map((item, index) => (
+                <img
+                  key={`img-${index}`}
+                  src={URL.createObjectURL(item.file)}
+                  alt={item.name}
+                  className="w-full h-36 object-cover rounded flex justify-center items-center border"
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
         {/* Audio */}
-        {audio.map((item, index) => (
-          <div key={`audio-${index}`} className="border p-2 rounded w-60">
-            <p className="text-sm mb-2">{item.name}</p>
+        {audio.length > 0 ? (
+          <div className="flex justify-center flex-col  gap-10">
+            <h2 className="flex justify-center text-2xl">{"Audio"}</h2>
+            <div className=" grid grid-cols-3 gap-2 justify-center items-center">
+              {audio.map((item, index) => (
+                <div
+                  key={`audio-${index}`}
+                  className="border p-2 rounded gap-5 flex flex-col"
+                  title={item.name}
+                >
+                  <p className="w-full h-24 p-10 text-wrap object-cover rounded flex justify-center items-center border-4 border-black">
+                    {item.name.length > 30
+                      ? item.name.substring(0, 60) + "..."
+                      : item.name}
+                  </p>
 
-            <audio controls className="w-full">
-              <source
-                src={URL.createObjectURL(item.file)}
-                type={item.file.type}
-              />
-            </audio>
+                  <audio controls className="w-full">
+                    <source
+                      src={URL.createObjectURL(item.file)}
+                      type={item.file.type}
+                    />
+                  </audio>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
+        ) : (
+          ""
+        )}
 
-        {/* Other Media */}
-        {media.map((item, index) => (
-          <div
-            key={`media-${index}`}
-            className="border p-3 rounded flex items-center gap-2"
-          >
-            <Icon icon="material-symbols:attach-file" width="20" />
+        {media.length > 0 ? (
+          <div className="flex justify-center flex-col  gap-10">
+            <h2 className="flex justify-center text-2xl">{"Media"}</h2>
+            {/* Other Media */}
+            {media.map((item, index) => (
+              <div
+                key={`media-${index}`}
+                className="border p-3 rounded flex items-center gap-2"
+              >
+                <Icon icon="material-symbols:attach-file" width="20" />
 
-            <span className="text-sm">{item.name}</span>
+                <span className="text-sm">{item.name}</span>
+              </div>
+            ))}
           </div>
-        ))}
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
